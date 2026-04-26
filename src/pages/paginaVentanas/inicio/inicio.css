@@ -1,0 +1,50 @@
+/* 🌳 CONTENEDOR GLOBAL */
+.arbol-global {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* 🌳 IMAGEN RESPONSIVE REAL */
+.arbol-global img {
+  width: clamp(180px, 30vw, 520px);
+  /* 🔥 se adapta automáticamente según pantalla */
+
+  height: auto;
+
+  transform: translateY(-20%);
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 1024px) {
+  .arbol-global img {
+    width: 400px;           /* más pequeño */
+    transform: translateY(-25%);
+  }
+}
+
+/* ================= CELULAR ================= */
+@media (max-width: 768px) {
+  .arbol-global img {
+    width: 280px;           /* tamaño ideal móvil */
+    transform: translateY(-10%);
+    opacity: 0.9;           /* opcional: menos invasivo */
+  }
+}
+
+/* ================= CELULAR PEQUEÑO ================= */
+@media (max-width: 480px) {
+  .arbol-global img {
+    width: 220px;
+    transform: translateY(0); /* no subir mucho */
+    opacity: 0.7;
+  }
+
+@media (max-width: 768px) {
+  .arbol-global img {
+    transform: translateY(-5%); /* menos subida */
+  }
+}
+}
