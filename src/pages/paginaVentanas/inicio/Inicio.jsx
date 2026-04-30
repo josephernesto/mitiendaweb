@@ -1,41 +1,71 @@
 import "./inicio.css";
-import arbol from "./imagenesinicio/nina-arbol.PNG"; // ruta correcta
+import { useState } from "react";
+
+import esquinaDerecha from "./imagenesinicio/esquina_derecha_arriba.png";
+import esquinaIzquierda from "./imagenesinicio/esquina_izquierda_abajo.png";
 
 export default function Inicio() {
+  const [menuAbierto, setMenuAbierto] = useState(false);
+
   return (
-    <>
-      {/* HERO (parte azul de arriba) */}
-      <section className="hero-section">
-        <div className="hero-texto">
-          <h1>CONÓCENOS</h1>
-          <p>Centro Clínico de Salud Mental "Muñoz"</p>
-        </div>
-      </section>
+    <div className="pagina">
+      <button
+        className={`menu-toggle ${menuAbierto ? "menu-toggle-abierto" : ""}`}
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded={menuAbierto}
+        aria-controls="menu-principal"
+        onClick={() => setMenuAbierto((abierto) => !abierto)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
 
-      {/* SERVICIOS */}
-      <section className="servicios-section">
-        <h2>NUESTROS SERVICIOS</h2>
+      <nav
+        id="menu-principal"
+        className={`menu-principal ${menuAbierto ? "menu-abierto" : ""}`}
+        aria-label="Menu principal"
+      >
+        <a className="menu-boton menu-boton-activo" href="/" onClick={() => setMenuAbierto(false)}>
+          Inicio
+        </a>
+        <a className="menu-boton" href="/especialidades" onClick={() => setMenuAbierto(false)}>
+          Especialidades
+        </a>
+        <a className="menu-boton" href="/blog" onClick={() => setMenuAbierto(false)}>
+          Blog
+        </a>
+        <a className="menu-boton" href="/contacto" onClick={() => setMenuAbierto(false)}>
+          Contacto
+        </a>
+      </nav>
 
-        <div className="cards">
-          <div className="card">Contacto Detallados</div>
-          <div className="card">Demostración Servicios</div>
-          <div className="card">Personal y Organización</div>
-          <div className="card">Servicios del Cambio</div>
-        </div>
-      </section>
+      <img
+        src={esquinaDerecha}
+        className="decoracion derecha-arriba"
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src={esquinaIzquierda}
+        className="decoracion izquierda-abajo"
+        alt=""
+        aria-hidden="true"
+      />
+      <span className="forma espiral-centro" aria-hidden="true" />
+      <span className="forma espiral-arriba" aria-hidden="true" />
+      <span className="forma espiral-abajo" aria-hidden="true" />
+      <span className="flor flor-1" aria-hidden="true" />
+      <span className="flor flor-2" aria-hidden="true" />
+      <span className="flor flor-3" aria-hidden="true" />
+      <span className="flor flor-4" aria-hidden="true" />
 
-      {/* FOOTER (tierra + árbol) */}
-      <footer className="inicio-footer">
-        <div className="footer-contenido">
-          <p>📞 021 234 5689</p>
-          <p>✉️ info@snental.com</p>
-        </div>
+      <div className="contenido">
+        <h1>CONÓCENOS</h1>
+        <p>Centro Clínico de Salud Mental "Muñoz"</p>
+      </div>
 
-        {/* 🌳 ÁRBOL */}
-        <div className="arbol-container">
-          <img src={arbol} alt="Árbol con niña" className="imagen-nina" />
-        </div>
-      </footer>
-    </>
+    </div>
   );
 }
